@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
-class JournalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class JournalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NSFetchedResultsControllerDelegate {
     let imagePicker = UIImagePickerController()
+    var journal: Entity!
+    var fetchResultController: NSFetchedResultsController<Entity>!
+    weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
     @IBAction func chosePhoto(_ sender: UIButton) {
         imagePicker.allowsEditing = false
@@ -17,14 +21,32 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.present(imagePicker, animated: true, completion: nil)
     }
     
+    @IBAction func saveToCoredata(_ sender: UIButton) {
+        //這裡感覺可以寫成一個func 再去call他
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            journal = Entity(context: appDelegate.persistentContainer.viewContext)
+            journal.title = journalTitle.text
+            journal.content = journalContent.text
+            
+            if let journalImage = journalPhotoView.image {
+                if let imageData = UIImagePNGRepresentation(journalImage){
+                    journal.photo = NSData(data: imageData)
+                }
+            }
+            print("saving successed")
+            appDelegate.saveContext()
+            
+        }
+    }
+    
+    
+    
     @IBOutlet weak var journalContent: UITextView!
-    @IBOutlet weak var journalTitle: UILabel!
+    @IBOutlet weak var journalTitle: UITextField!
     @IBOutlet weak var journalPhotoView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-
-        // Do any additional setup after loading the view.
     }
     
     
