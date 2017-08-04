@@ -119,6 +119,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wtf-88-v4X">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="chosePhoto:" destination="INZ-X4-hbR" eventType="touchUpInside" id="AM1-sN-Sgs"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mva-VW-il7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                 <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,14 +162,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="button_close"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wtf-88-v4X">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="chosePhoto:" destination="INZ-X4-hbR" eventType="touchUpInside" id="AM1-sN-Sgs"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -170,6 +170,11 @@
                             <constraint firstItem="Mva-VW-il7" firstAttribute="top" secondItem="x5i-Rr-Vr4" secondAttribute="top" id="p6A-TU-ZaP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="journalContent" destination="5Ze-fS-xBl" id="U2j-b6-MCW"/>
+                        <outlet property="journalPhotoView" destination="Mva-VW-il7" id="Jtq-BB-IF9"/>
+                        <outlet property="journalTitle" destination="EoM-Pr-rfC" id="NdJ-ab-7Nt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIG-N7-2ou" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
