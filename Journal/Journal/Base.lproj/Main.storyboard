@@ -85,15 +85,6 @@
                                                     <rect key="frame" x="11" y="181" width="353" height="26"/>
                                                     <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwR-5J-5fg">
-                                                    <rect key="frame" x="0.0" y="-18" width="330" height="154"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="updateJournal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fbp-T9-7Xg"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59V-F4-vkW">
                                                     <rect key="frame" x="322" y="159" width="8" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -101,9 +92,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwR-5J-5fg">
+                                                    <rect key="frame" x="30" y="11" width="200" height="122"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="122" id="Oz0-Ad-cmV"/>
+                                                        <constraint firstAttribute="width" constant="200" id="dKu-ee-AgX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="updateJournal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fbp-T9-7Xg"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="OwR-5J-5fg" firstAttribute="leading" secondItem="hNu-py-6g3" secondAttribute="leadingMargin" constant="22" id="6hE-sT-fhX"/>
                                                 <constraint firstItem="jqz-FN-NYr" firstAttribute="leading" secondItem="hNu-py-6g3" secondAttribute="leading" constant="11" id="8ZU-bz-PoJ"/>
+                                                <constraint firstItem="OwR-5J-5fg" firstAttribute="top" secondItem="hNu-py-6g3" secondAttribute="topMargin" constant="3" id="HPn-3o-eOd"/>
                                                 <constraint firstAttribute="trailing" secondItem="jqz-FN-NYr" secondAttribute="trailing" constant="11" id="api-Tu-dga"/>
                                                 <constraint firstItem="ES3-oM-2tl" firstAttribute="leading" secondItem="hNu-py-6g3" secondAttribute="leadingMargin" constant="22" id="eSN-Va-rPd"/>
                                                 <constraint firstItem="jqz-FN-NYr" firstAttribute="top" secondItem="ES3-oM-2tl" secondAttribute="bottom" constant="8" id="l7p-LF-raO"/>
