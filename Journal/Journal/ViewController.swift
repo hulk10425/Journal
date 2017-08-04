@@ -13,8 +13,22 @@ var postIDD: Int!
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     var journals: [Entity]!
 
+    
+    
     @IBAction func updateJournal(_ sender: UIButton) {
         //TODO 帶值過去下一個Ｖc // 並改變button title
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let JournalVC = sb.instantiateViewController(withIdentifier: "JournalVC") as? JournalViewController
+        
+        postIDD = Int(journals[sender.tag].id)
+        // print(journals[indexPath.row].content)
+        //print(JournalVC.journalContent.text)
+        
+        self.present(JournalVC!, animated: true, completion: nil)
+        
+        
+        
     }
 
     @IBAction func addJournal(_ sender: UIButton) {
@@ -53,6 +67,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell?.journalTitle.text = journals[indexPath.row].title
         cell?.postId.text = String(journals[indexPath.row].id)
         cell?.journalImage.image = UIImage(data:(journals[indexPath.row].photo as? Data)!)
+        cell?.button.tag = indexPath.row
+        
         return cell!
     }
 

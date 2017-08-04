@@ -13,6 +13,7 @@ class JournalTableViewCell: UITableViewCell {
     @IBOutlet weak var postId: UILabel!
     @IBOutlet weak var journalImage: UIImageView!
     @IBOutlet weak var journalTitle: UILabel!
+    @IBOutlet weak var button: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
