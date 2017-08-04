@@ -15,18 +15,15 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
     var fetchResultController: NSFetchedResultsController<Entity>!
     var updateJournal: Entity!
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
-    
+
     func manager(didGet journalInfo: Entity) {
         journalContent.text = journalInfo.content
-        
+
     }
 
     @IBAction func backtoHome(_ sender: UIButton) {
-        //這邊感覺可以用delegate傳viewcontroller對他做事情
 
-//        let sb = UIStoryboard(name: "Main", bundle: nil)
-//        let VC = sb.instantiateViewController(withIdentifier: "HomeVC") as! ViewController
-//        self.present(VC, animated: true, completion: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func chosePhoto(_ sender: UIButton) {
@@ -34,41 +31,48 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
     }
-    
+
     @IBAction func saveToCoredata(_ sender: UIButton) {
         if sendButton.titleLabel!.text! == "Save" {
-            let postID = UserDefaults.standard.object(forKey: "PostID") as! Int
-            UserDefaults.standard.setValue(postID + 1, forKey: "PostID")
+            let postID = UserDefaults.standard.object(forKey: "PostID") as? Int
+            UserDefaults.standard.setValue(postID! + 1, forKey: "PostID")
             //這裡感覺可以寫成一個func 再去call他
             if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
                 journal = Entity(context: appDelegate.persistentContainer.viewContext)
                 journal.title = journalTitle.text
                 journal.content = journalContent.text
                 journal.isdeleted = false
-                journal.id = Int16(Int32(UserDefaults.standard.object(forKey: "PostID") as! Int))
-                
+                journal.id = Int16(Int32((UserDefaults.standard.object(forKey: "PostID") as? Int)!))
+
                 if let journalImage = journalPhotoView.image {
-                    if let imageData = UIImagePNGRepresentation(journalImage){
+                    if let imageData = UIImagePNGRepresentation(journalImage) {
                         journal.photo = NSData(data: imageData)
                     }
                 }
+
                 print("saving successed")
                 appDelegate.saveContext()
-                
+                  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+
+                self.dismiss(animated: true, completion: nil)
             }
         } else if sendButton.titleLabel!.text! == "Update" {
             print("hello")
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
             updateJournal.title = journalTitle.text
             updateJournal.content = journalContent.text
             let imageData: NSData = UIImagePNGRepresentation(journalPhotoView.image!)! as NSData
             updateJournal.photo = imageData
-            appDelegate.saveContext()
-            
+            appDelegate?.saveContext()
+               NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+
+            self.dismiss(animated: true, completion: nil)
+
         }
+
+          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
     }
-    
-    
+
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var journalContent: UITextView!
     @IBOutlet weak var journalTitle: UITextField!
@@ -77,25 +81,25 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         imagePicker.delegate = self
         if postIDD != nil {
-        journalPhotoView.contentMode = .scaleAspectFit
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-         let context = appDelegate.persistentContainer.viewContext
-       
+        //journalPhotoView.contentMode = .scaleAspectFill
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+         let context = appDelegate?.persistentContainer.viewContext
+
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Entity")
         do {
-            
-            let content = try context.fetch(fetchRequest)
-            for journalinfo  in content {
-                let container = journalinfo as! Entity
-                if Int(container.id) == postIDD {
+
+            let content = try context?.fetch(fetchRequest)
+            for journalinfo  in content! {
+                let container = journalinfo as? Entity
+                if Int((container?.id)!) == postIDD {
                     updateJournal = container
                 }
-                
+
             }
-            
+
             journalContent.text = updateJournal.content
             journalTitle.text = updateJournal.title
-            journalPhotoView.image = UIImage(data:updateJournal.photo as! Data)
+            journalPhotoView.image = UIImage(data:(updateJournal.photo as? Data)!)
             sendButton.setTitle("Update", for: .normal)
             postIDD = nil
         } catch {
@@ -105,12 +109,10 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
             sendButton.setTitle("Save", for: .normal)
         }
     }
-    
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         //picker.dismiss(animated: true, completion: nil)
-        
-    
+
     if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
         journalPhotoView.image = image
     } else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -118,10 +120,9 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
         dismiss(animated: true, completion: nil)
     }
-    
+
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
 
 }
