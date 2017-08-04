@@ -72,26 +72,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell!
     }
 
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-
-        let delete = UITableViewRowAction(style: .normal, title: "More", handler: { (_, _) in print("deleye")
-            tableView.isEditing = false
-        })
-
-        delete.backgroundColor = UIColor.lightGray
+    func tableView(_ tableView: UITableView, editActionsForRowAtIndexPath indexPath: IndexPath) -> [AnyObject]? {
+        let delete = UITableViewRowAction(style: .normal, title: "delete") { action, index in
+            print("more button tapped")
+        }
+        delete.backgroundColor = UIColor.red
 
         return [delete]
     }
-
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // 要显示自定义的action,cell必须处于编辑状态
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
         return true
     }
-
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        // 同时你也需要实现本方法,否则自定义action是不会显示的,啦啦啦
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let sb = UIStoryboard(name: "Main", bundle: nil)
