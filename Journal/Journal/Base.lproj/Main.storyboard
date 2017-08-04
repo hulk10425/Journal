@@ -36,6 +36,9 @@
                                         <rect key="frame" x="307" y="17" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="icon_plus"/>
+                                        <connections>
+                                            <action selector="addJournal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZGu-Kg-sAA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,6 +75,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Fwr-Yo-KCc"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="fqJ-cw-DV2"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

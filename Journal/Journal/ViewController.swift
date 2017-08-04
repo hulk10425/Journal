@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBAction func addJournal(_ sender: UIButton) {
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
