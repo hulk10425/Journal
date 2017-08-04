@@ -22,25 +22,33 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func saveToCoredata(_ sender: UIButton) {
-        //這裡感覺可以寫成一個func 再去call他
-        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-            journal = Entity(context: appDelegate.persistentContainer.viewContext)
-            journal.title = journalTitle.text
-            journal.content = journalContent.text
-            
-            if let journalImage = journalPhotoView.image {
-                if let imageData = UIImagePNGRepresentation(journalImage){
-                    journal.photo = NSData(data: imageData)
+        if sendButton.titleLabel!.text! == "Save" {
+            let postID = UserDefaults.standard.object(forKey: "PostID") as! Int
+            UserDefaults.standard.setValue(postID + 1, forKey: "PostID")
+            //這裡感覺可以寫成一個func 再去call他
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                journal = Entity(context: appDelegate.persistentContainer.viewContext)
+                journal.title = journalTitle.text
+                journal.content = journalContent.text
+                journal.isdeleted = false
+                journal.id = Int32(UserDefaults.standard.object(forKey: "PostID") as! Int)
+                
+                if let journalImage = journalPhotoView.image {
+                    if let imageData = UIImagePNGRepresentation(journalImage){
+                        journal.photo = NSData(data: imageData)
+                    }
                 }
+                print("saving successed")
+                appDelegate.saveContext()
+                
             }
-            print("saving successed")
-            appDelegate.saveContext()
+        } else if sendButton.titleLabel!.text! == "Update" {
             
         }
     }
     
     
-    
+    @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var journalContent: UITextView!
     @IBOutlet weak var journalTitle: UITextField!
     @IBOutlet weak var journalPhotoView: UIImageView!

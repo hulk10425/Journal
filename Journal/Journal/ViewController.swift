@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    
     @IBAction func updateJournal(_ sender: UIButton) {
         //帶值過去下一個ＶＣ
     }
@@ -26,7 +27,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        checkPostID()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +47,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //TODO
         let cell = tableView.dequeueReusableCell(withIdentifier: "JournalCell", for: indexPath) as! JournalTableViewCell
         return cell
+    }
+    
+    func checkPostID () {
+        guard UserDefaults.standard.object(forKey: "PostID") != nil else {
+            UserDefaults.standard.setValue(0, forKey: "PostID")
+            return
+        }
     }
 
 }

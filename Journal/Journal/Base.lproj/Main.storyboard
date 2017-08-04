@@ -177,6 +177,7 @@
                         <outlet property="journalContent" destination="5Ze-fS-xBl" id="U2j-b6-MCW"/>
                         <outlet property="journalPhotoView" destination="Mva-VW-il7" id="Jtq-BB-IF9"/>
                         <outlet property="journalTitle" destination="EqC-td-Xhn" id="j6L-Im-poE"/>
+                        <outlet property="sendButton" destination="End-9O-lvk" id="W8c-es-Ogw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIG-N7-2ou" userLabel="First Responder" sceneMemberID="firstResponder"/>
