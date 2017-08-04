@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DB571756377B419B7E2A019 /* Pods_Journal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED319A836E311A5FCB238466 /* Pods_Journal.framework */; };
 		BE45DF071F34010A00D8FA1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE45DF061F34010A00D8FA1D /* AppDelegate.swift */; };
 		BE45DF091F34010A00D8FA1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE45DF081F34010A00D8FA1D /* ViewController.swift */; };
 		BE45DF0C1F34010A00D8FA1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE45DF0A1F34010A00D8FA1D /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A7C49D25995DD239B98C0CB /* Pods-Journal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Journal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Journal/Pods-Journal.debug.xcconfig"; sourceTree = "<group>"; };
+		2A8C2BF0BEDAA5778E3AAF37 /* Pods-Journal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Journal.release.xcconfig"; path = "Pods/Target Support Files/Pods-Journal/Pods-Journal.release.xcconfig"; sourceTree = "<group>"; };
 		BE45DF031F34010A00D8FA1D /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE45DF061F34010A00D8FA1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE45DF081F34010A00D8FA1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		BE45DF1E1F3409BC00D8FA1D /* JournalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalTableViewCell.swift; sourceTree = "<group>"; };
 		BE45DF201F340BD800D8FA1D /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		BE45DF221F34327800D8FA1D /* infoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoManager.swift; sourceTree = "<group>"; };
+		ED319A836E311A5FCB238466 /* Pods_Journal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Journal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DB571756377B419B7E2A019 /* Pods_Journal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09FAD95A748A2D40E2CEDC27 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2A7C49D25995DD239B98C0CB /* Pods-Journal.debug.xcconfig */,
+				2A8C2BF0BEDAA5778E3AAF37 /* Pods-Journal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		77C053C11B98AE679561DB96 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED319A836E311A5FCB238466 /* Pods_Journal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BE45DEFA1F34010A00D8FA1D = {
 			isa = PBXGroup;
 			children = (
 				BE45DF051F34010A00D8FA1D /* Journal */,
 				BE45DF041F34010A00D8FA1D /* Products */,
+				09FAD95A748A2D40E2CEDC27 /* Pods */,
+				77C053C11B98AE679561DB96 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,9 +110,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE45DF181F34010A00D8FA1D /* Build configuration list for PBXNativeTarget "Journal" */;
 			buildPhases = (
+				891411FF775B6C2B0536DEBB /* [CP] Check Pods Manifest.lock */,
 				BE45DEFF1F34010A00D8FA1D /* Sources */,
 				BE45DF001F34010A00D8FA1D /* Frameworks */,
 				BE45DF011F34010A00D8FA1D /* Resources */,
+				18DCB1EF7144F3892110BD5E /* [CP] Embed Pods Frameworks */,
+				FC0A96744A620A13666F04B7 /* [CP] Copy Pods Resources */,
+				BE8BF01C1F346D92002B2EFE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -146,6 +174,67 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18DCB1EF7144F3892110BD5E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Journal/Pods-Journal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		891411FF775B6C2B0536DEBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BE8BF01C1F346D92002B2EFE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		FC0A96744A620A13666F04B7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Journal/Pods-Journal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE45DEFF1F34010A00D8FA1D /* Sources */ = {
@@ -279,6 +368,7 @@
 		};
 		BE45DF191F34010A00D8FA1D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A7C49D25995DD239B98C0CB /* Pods-Journal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TF66DCXK88;
@@ -292,6 +382,7 @@
 		};
 		BE45DF1A1F34010A00D8FA1D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A8C2BF0BEDAA5778E3AAF37 /* Pods-Journal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TF66DCXK88;
@@ -322,6 +413,7 @@
 				BE45DF1A1F34010A00D8FA1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -18,5 +18,3 @@ struct JournalInfo {
 protocol infoManagerDelegate:class {
     func manager(didGet journalInfo: Entity)
 }
-
-
