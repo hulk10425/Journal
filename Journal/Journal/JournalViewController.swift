@@ -22,11 +22,9 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
 
     @IBAction func backtoHome(_ sender: UIButton) {
-        //這邊感覺可以用delegate傳viewcontroller對他做事情
-
-//        let sb = UIStoryboard(name: "Main", bundle: nil)
-//        let VC = sb.instantiateViewController(withIdentifier: "HomeVC") as! ViewController
-//        self.present(VC, animated: true, completion: nil)
+       
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func chosePhoto(_ sender: UIButton) {
@@ -52,9 +50,14 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
                         journal.photo = NSData(data: imageData)
                     }
                 }
+                
+                
+
                 print("saving successed")
                 appDelegate.saveContext()
+                  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                 
+                self.dismiss(animated: true, completion: nil)
             }
         } else if sendButton.titleLabel!.text! == "Update" {
             print("hello")
@@ -64,8 +67,13 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
             let imageData: NSData = UIImagePNGRepresentation(journalPhotoView.image!)! as NSData
             updateJournal.photo = imageData
             appDelegate.saveContext()
+               NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
             
+            self.dismiss(animated: true, completion: nil)
+
         }
+        
+          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
     }
     
     
@@ -77,7 +85,7 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         imagePicker.delegate = self
         if postIDD != nil {
-        journalPhotoView.contentMode = .scaleAspectFit
+        //journalPhotoView.contentMode = .scaleAspectFill
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
          let context = appDelegate.persistentContainer.viewContext
        
