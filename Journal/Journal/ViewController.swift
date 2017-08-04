@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBAction func updateJournal(_ sender: UIButton) {
+        //帶值過去下一個ＶＣ
+    }
     
     @IBAction func addJournal(_ sender: UIButton) {
         
