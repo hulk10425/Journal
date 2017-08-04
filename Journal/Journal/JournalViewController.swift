@@ -76,11 +76,8 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        
-        
         if postIDD != nil {
-            
-        
+        journalPhotoView.contentMode = .scaleAspectFit
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
          let context = appDelegate.persistentContainer.viewContext
        
