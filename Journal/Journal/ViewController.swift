@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+var postIDD:Int!
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
@@ -16,9 +17,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func updateJournal(_ sender: UIButton) {
         //TODO 帶值過去下一個Ｖc // 並改變button title
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let JournalVC = sb.instantiateViewController(withIdentifier: "JournalVC") as! JournalViewController
-        self.present(JournalVC, animated: true, completion: nil)
     }
     
     @IBAction func addJournal(_ sender: UIButton) {
@@ -60,6 +58,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let JournalVC = sb.instantiateViewController(withIdentifier: "JournalVC") as! JournalViewController
+        
+         postIDD = Int(journals[indexPath.row].id)
+       // print(journals[indexPath.row].content)
+        //print(JournalVC.journalContent.text)
+        
+        
+        self.present(JournalVC, animated: true, completion: nil)
+        
+    }
+    
+    
+    
     func checkPostID () {
         guard UserDefaults.standard.object(forKey: "PostID") != nil else {
             UserDefaults.standard.setValue(0, forKey: "PostID")
@@ -71,6 +92,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+            
             let context = appDelegate.persistentContainer.viewContext
             do{
                 journals = try context.fetch(request)
@@ -80,6 +102,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.journalList.reloadData()
         }
     }
+    func manager(didGet journalInfo: Entity) {
+        
+    }
 
+}
+
+extension ViewController: infoManagerDelegate {
+    
+    class infoManager {
+        
+            weak var delegate: infoManagerDelegate?
+        
+            func getcontroller (journalInfo: Entity) {
+                DispatchQueue.main.async {
+                self.delegate?.manager(didGet: journalInfo)
+                }
+            }
+        
+      }
+    
 }
 

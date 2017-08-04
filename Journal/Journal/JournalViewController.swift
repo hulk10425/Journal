@@ -9,11 +9,17 @@
 import UIKit
 import CoreData
 
-class JournalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NSFetchedResultsControllerDelegate {
+class JournalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NSFetchedResultsControllerDelegate, infoManagerDelegate {
     let imagePicker = UIImagePickerController()
     var journal: Entity!
     var fetchResultController: NSFetchedResultsController<Entity>!
+    var updateJournal: Entity!
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
+    
+    func manager(didGet journalInfo: Entity) {
+        journalContent.text = journalInfo.content
+        
+    }
 
     @IBAction func backtoHome(_ sender: UIButton) {
         //這邊感覺可以用delegate傳viewcontroller對他做事情
@@ -39,7 +45,7 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
                 journal.title = journalTitle.text
                 journal.content = journalContent.text
                 journal.isdeleted = false
-                journal.id = Int32(UserDefaults.standard.object(forKey: "PostID") as! Int)
+                journal.id = Int16(Int32(UserDefaults.standard.object(forKey: "PostID") as! Int))
                 
                 if let journalImage = journalPhotoView.image {
                     if let imageData = UIImagePNGRepresentation(journalImage){
@@ -51,6 +57,13 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
                 
             }
         } else if sendButton.titleLabel!.text! == "Update" {
+            print("hello")
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            updateJournal.title = journalTitle.text
+            updateJournal.content = journalContent.text
+            let imageData: NSData = UIImagePNGRepresentation(journalPhotoView.image!)! as NSData
+            updateJournal.photo = imageData
+            appDelegate.saveContext()
             
         }
     }
@@ -63,6 +76,37 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        
+        
+        if postIDD != nil {
+            
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+         let context = appDelegate.persistentContainer.viewContext
+       
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Entity")
+        do {
+            
+            let content = try context.fetch(fetchRequest)
+            for journalinfo  in content {
+                let container = journalinfo as! Entity
+                if Int(container.id) == postIDD {
+                    updateJournal = container
+                }
+                
+            }
+            
+            journalContent.text = updateJournal.content
+            journalTitle.text = updateJournal.title
+            journalPhotoView.image = UIImage(data:updateJournal.photo as! Data)
+            sendButton.setTitle("Update", for: .normal)
+            postIDD = nil
+        } catch {
+            print(error)
+        }
+        } else {
+            sendButton.setTitle("Save", for: .normal)
+        }
     }
     
     

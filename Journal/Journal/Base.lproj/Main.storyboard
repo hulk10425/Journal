@@ -24,30 +24,39 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJg-TE-7iS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Journals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkx-qx-6U9">
-                                        <rect key="frame" x="20" y="34" width="93" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Journals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkx-qx-6U9">
+                                        <rect key="frame" x="15" y="17" width="100" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Y0s-Ph-KOp"/>
+                                            <constraint firstAttribute="height" constant="21" id="v52-1l-paL"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eS0-aI-26H">
-                                        <rect key="frame" x="307" y="17" width="44" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eS0-aI-26H">
+                                        <rect key="frame" x="306" y="8" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="QRG-bg-Zgs"/>
+                                            <constraint firstAttribute="height" constant="44" id="qBm-c6-qBa"/>
+                                        </constraints>
                                         <state key="normal" image="icon_plus"/>
                                         <connections>
                                             <action selector="addJournal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZGu-Kg-sAA"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Pkx-qx-6U9" firstAttribute="top" secondItem="dJg-TE-7iS" secondAttribute="top" constant="17" id="0c3-mU-tYI"/>
                                     <constraint firstAttribute="height" constant="79" id="8GK-Zd-T9Y"/>
+                                    <constraint firstItem="Pkx-qx-6U9" firstAttribute="leading" secondItem="dJg-TE-7iS" secondAttribute="leading" constant="15" id="DNI-87-g3t"/>
+                                    <constraint firstItem="eS0-aI-26H" firstAttribute="top" secondItem="dJg-TE-7iS" secondAttribute="top" constant="8" id="G59-Df-JsW"/>
+                                    <constraint firstAttribute="trailing" secondItem="eS0-aI-26H" secondAttribute="trailing" constant="25" id="cpl-1N-2bT"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="212" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ab-TM-i38">
-                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="212" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ab-TM-i38">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JournalCell" rowHeight="212" id="6p9-Ov-ifk" customClass="JournalTableViewCell" customModule="Journal" customModuleProvider="target">
@@ -61,9 +70,6 @@
                                                     <rect key="frame" x="30" y="8" width="306" height="199"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="updateJournal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Etg-Qu-0r9"/>
-                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="button_close" translatesAutoresizingMaskIntoConstraints="NO" id="L4J-0h-vSu">
                                                     <rect key="frame" x="11" y="8" width="353" height="128"/>
@@ -106,6 +112,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dJg-TE-7iS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1v6-XD-wLg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5ab-TM-i38" secondAttribute="bottom" id="AP2-fB-nJv"/>
+                            <constraint firstAttribute="trailing" secondItem="5ab-TM-i38" secondAttribute="trailing" id="Cx3-FG-2TG"/>
+                            <constraint firstItem="5ab-TM-i38" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="D9k-0Y-tKU"/>
+                            <constraint firstItem="5ab-TM-i38" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FrS-oY-PSH"/>
                             <constraint firstAttribute="trailing" secondItem="dJg-TE-7iS" secondAttribute="trailing" id="n8B-8W-2ln"/>
                             <constraint firstItem="dJg-TE-7iS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nW2-IV-EKA"/>
                         </constraints>

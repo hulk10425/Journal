@@ -11,20 +11,12 @@ import Foundation
 struct JournalInfo {
     var title: String
     var content: String
-    var photo: UIImage
+    var photo: NSData
+    var id: Int
 }
 
 protocol infoManagerDelegate:class {
-    func manager(image: , _controller: ViewController)
-    
-   // func manager(_ manager: OrderManager, didFailWith error: Error )
-    
+    func manager(didGet journalInfo: Entity)
 }
 
-class OrderManager {
-    weak var delegate: OrderManagerDelegate?
-    func getcontroller () {
-        self.delegate?.manager(<#T##manager: OrderManager##OrderManager#>, _controller: <#T##ViewController#>)
-    }
-    
-}
+
