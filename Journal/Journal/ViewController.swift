@@ -64,24 +64,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        let more = UITableViewRowAction(style: .Normal, title: "More") { action, index in
-            println("more button tapped")
-        }
-        more.backgroundColor = UIColor.lightGrayColor()
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        let favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
-            println("favorite button tapped")
-        }
-        favorite.backgroundColor = UIColor.orangeColor()
+        let delete = UITableViewRowAction(style: .normal, title: "More", handler:{ (action,indexPath) in print("deleye")
+            tableView.isEditing = false
+        })
         
-        let share = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
-            println("share button tapped")
-        }
-        share.backgroundColor = UIColor.blueColor()
+        delete.backgroundColor = UIColor.lightGray
         
-        return [share, favorite, more]
+        return [delete]
     }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // 要显示自定义的action,cell必须处于编辑状态
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // 同时你也需要实现本方法,否则自定义action是不会显示的,啦啦啦
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

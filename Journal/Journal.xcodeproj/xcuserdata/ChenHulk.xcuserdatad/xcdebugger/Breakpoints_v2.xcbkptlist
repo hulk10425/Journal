@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Journal/ViewController.swift"
-            timestampString = "523528297.792096"
+            timestampString = "523529261.766166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "infoManager"
             landmarkType = "3">
          </BreakpointContent>
