@@ -9,12 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
+    
     @IBAction func addJournal(_ sender: UIButton) {
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let JournalVC = sb.instantiateViewController(withIdentifier: "JournalVC") as! JournalViewController
+        self.present(JournalVC, animated: true, completion: nil)
+        
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,13 +33,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        //TODO
         return 2
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        //TODO
         let cell = tableView.dequeueReusableCell(withIdentifier: "JournalCell", for: indexPath) as! JournalTableViewCell
         return cell
     }

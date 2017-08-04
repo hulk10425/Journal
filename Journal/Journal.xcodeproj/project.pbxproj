@@ -15,6 +15,7 @@
 		BE45DF141F34010A00D8FA1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE45DF121F34010A00D8FA1D /* LaunchScreen.storyboard */; };
 		BE45DF1D1F3407FC00D8FA1D /* JournalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE45DF1B1F3407FC00D8FA1D /* JournalModel.xcdatamodeld */; };
 		BE45DF1F1F3409BC00D8FA1D /* JournalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE45DF1E1F3409BC00D8FA1D /* JournalTableViewCell.swift */; };
+		BE45DF211F340BD800D8FA1D /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE45DF201F340BD800D8FA1D /* JournalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BE45DF151F34010A00D8FA1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE45DF1C1F3407FC00D8FA1D /* JournalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JournalModel.xcdatamodel; sourceTree = "<group>"; };
 		BE45DF1E1F3409BC00D8FA1D /* JournalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalTableViewCell.swift; sourceTree = "<group>"; };
+		BE45DF201F340BD800D8FA1D /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				BE45DF061F34010A00D8FA1D /* AppDelegate.swift */,
 				BE45DF081F34010A00D8FA1D /* ViewController.swift */,
+				BE45DF201F340BD800D8FA1D /* JournalViewController.swift */,
 				BE45DF1E1F3409BC00D8FA1D /* JournalTableViewCell.swift */,
 				BE45DF0A1F34010A00D8FA1D /* Main.storyboard */,
 				BE45DF101F34010A00D8FA1D /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 				BE45DF1D1F3407FC00D8FA1D /* JournalModel.xcdatamodeld in Sources */,
 				BE45DF1F1F3409BC00D8FA1D /* JournalTableViewCell.swift in Sources */,
 				BE45DF091F34010A00D8FA1D /* ViewController.swift in Sources */,
+				BE45DF211F340BD800D8FA1D /* JournalViewController.swift in Sources */,
 				BE45DF071F34010A00D8FA1D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
