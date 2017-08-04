@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Journal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeVC" id="BYZ-38-t0r" customClass="ViewController" customModule="Journal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -81,11 +81,19 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59V-F4-vkW">
+                                                    <rect key="frame" x="322" y="159" width="8" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="journalImage" destination="L4J-0h-vSu" id="i3o-wU-OZp"/>
                                             <outlet property="journalTitle" destination="ES3-oM-2tl" id="jdo-kd-x9C"/>
+                                            <outlet property="postId" destination="59V-F4-vkW" id="sAs-NI-FJJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -102,6 +110,9 @@
                             <constraint firstItem="dJg-TE-7iS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nW2-IV-EKA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="journalList" destination="5ab-TM-i38" id="Nk0-yx-4E4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,6 +168,9 @@
                                 <rect key="frame" x="16" y="20" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="button_close"/>
+                                <connections>
+                                    <action selector="backtoHome:" destination="INZ-X4-hbR" eventType="touchUpInside" id="97w-az-Hxp"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EqC-td-Xhn">
                                 <rect key="frame" x="34" y="383" width="137" height="30"/>

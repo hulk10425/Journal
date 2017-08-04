@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+    var journals:[Entity]!
     
     
     @IBAction func updateJournal(_ sender: UIButton) {
-        //帶值過去下一個ＶＣ
+        //TODO 帶值過去下一個Ｖc // 並改變button title
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let JournalVC = sb.instantiateViewController(withIdentifier: "JournalVC") as! JournalViewController
+        self.present(JournalVC, animated: true, completion: nil)
     }
     
     @IBAction func addJournal(_ sender: UIButton) {
@@ -25,27 +30,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     
+    @IBOutlet weak var journalList: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         checkPostID()
-        
+        getCoredata()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //TODO
+    override func viewWillAppear(_ animated: Bool) {
+        self.journalList.reloadData()
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO
-        return 2
+        
+        
+        return journals.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //TODO
         let cell = tableView.dequeueReusableCell(withIdentifier: "JournalCell", for: indexPath) as! JournalTableViewCell
+        
+//        cell.journalImage.image = UI
+        cell.journalTitle.text = journals[indexPath.row].title
+        cell.postId.text = String(journals[indexPath.row].id)
+        cell.journalImage.image = UIImage(data:journals[indexPath.row].photo as! Data)
         return cell
     }
     
@@ -53,6 +64,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard UserDefaults.standard.object(forKey: "PostID") != nil else {
             UserDefaults.standard.setValue(0, forKey: "PostID")
             return
+        }
+    }
+    
+    func getCoredata () {
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+            let context = appDelegate.persistentContainer.viewContext
+            do{
+                journals = try context.fetch(request)
+            } catch {
+             print(error)
+            }
+            self.journalList.reloadData()
         }
     }
 

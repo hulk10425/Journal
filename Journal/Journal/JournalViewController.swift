@@ -15,6 +15,14 @@ class JournalViewController: UIViewController, UIImagePickerControllerDelegate, 
     var fetchResultController: NSFetchedResultsController<Entity>!
     weak var delegate = UIApplication.shared.delegate as? AppDelegate
 
+    @IBAction func backtoHome(_ sender: UIButton) {
+        //這邊感覺可以用delegate傳viewcontroller對他做事情
+
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let VC = sb.instantiateViewController(withIdentifier: "HomeVC") as! ViewController
+//        self.present(VC, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func chosePhoto(_ sender: UIButton) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
